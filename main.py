@@ -45,6 +45,8 @@ def verifierdonnee(verificateur:numeroetmotdepasse):
     conn.execute(sql,(verificateur.numero,verificateur.mot_de_passe))
     resultat=conn.fetchall()
     connecter.commit()
-
-    return {"existe": "true", "utilisateur":resultat}
+    if resultat==[]:
+        return {"existe":"false","utilisateur":"rien"}
+    else:
+        return {"existe": "true", "utilisateur":resultat}
 
